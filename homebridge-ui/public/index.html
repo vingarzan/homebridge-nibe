@@ -17,10 +17,10 @@
 
 <div id="links">
     <img class="img-fluid" src="./nibe-logo.png">
-    <a target="_blank" href="https://www.nibeuplink.com/" class="btn btn-elegant" role="button">
+    <a target="_blank" href="https://www.myuplink.com/" class="btn btn-elegant" role="button">
         Account <i class="fa fa-external-link" aria-hidden="true"></i>
     </a>
-    <a target="_blank" href="https://api.nibeuplink.com/Account/LogIn" class="btn btn-elegant" role="button">
+    <a target="_blank" href="https://dev.myuplink.com/login" class="btn btn-elegant" role="button">
         Api Account <i class="fa fa-external-link" aria-hidden="true"></i>
     </a>
     <a id="authcode-button" target="_blank" href="#" class="btn btn-primary disabled" role="button">
@@ -37,29 +37,40 @@
     <div id="instruction-content" class="hidden">
         <ol>
             <li>
-                You need an account at Nibe Uplink. Click 
-                <a target="_blank" href="https://www.nibeuplink.com/" class="btn btn-elegant" role="button">
+                You need an account at MyUplink. Click 
+                <a target="_blank" href="https://www.myuplink.com/" class="btn btn-elegant" role="button">
                     Account <i class="fa fa-external-link" aria-hidden="true"></i>
-                </a> 
-                to open Nibe uplink page and login or register.
+                </a>
+                to open MyUplink uplink page and login or register.
+                Then register your installation.
+                Hint: you might receive by email a voucher for free Premium access for 5 years.
+
+                (Deprecated:
                 After successful logging in/registration you have an URL in this form: 
                 <code>https://www.nibeuplink.com/System/XXXXX/Status/Overview</code>.
-                Instead of XXXXX there is a number. This is your <strong>System identfier</strong> - paste it below.
+                Instead of XXXXX there is a number. This is your <strong>System identfier</strong> - paste it below.)
+
+                To get the System-Id, go to 
+                <a target="_blank" href="https://api.myuplink.com/swagger/index.html" class="btn btn-elegant" role="button">
+                    api.myuplink.com/swagger/index.html</a>.
+                There click the top-right "Autorize" button first.
+                Then scroll to /v2/systems/me and click "Try it out". The <code>systemId</code> should be in the
+                Response body. Copy it, without the quotes.
             </li>
             <li>
-                You need an application at Nibe Uplink Api. Click 
-                <a target="_blank" href="https://api.nibeuplink.com/Account/LogIn" class="btn btn-elegant" role="button">
-                    Api Account <i class="fa fa-external-link" aria-hidden="true"></i>
+                You need an application at dev.MyUplink.com. Click 
+                <a target="_blank" href="https://dev.myuplink.com/login" class="btn btn-elegant" role="button">
+                    Developer API Account <i class="fa fa-external-link" aria-hidden="true"></i>
                 </a>
-                to Go to Nibe Uplink Api and log in.
-                Click <i>MY APPLICATIONS</i> and then <i>Create application</i>.
+                to Go to My Uplink Api and log in.
+                Click <i>Applications</i> and then <i>Create New Application</i>.
                 Fill in <i>Name</i> and <i>Description</i>, it can be everything e.g. <i>Homebridge</i>.
                 The <i>Callback URL</i> is important, you can use <code>https://hp-net.github.io/homebridge-nibe/nibe.html</code> - it is safe to use it, it will just visualize parameter from callback url, it will not store anything. This is your <strong>Callback URL</strong> - paste it below. 
-                Accept the NIBE Uplink API Services Agreement and click <i>Create application</i>.
-                Then you get <strong>Identifier</strong> and <strong>Secret</strong> - paste them below.
+                Accept the My Uplink API Services Agreement and click <i>Create application</i>.
+                Then you get <strong>Client Identifier</strong> and <strong>Client Secret</strong> - paste them below.
             </li>
             <li>
-                You need authorization code from Nibe Uplink. Click 
+                You need an authorization code from My Uplink. Click 
                 <a id="authcode-button2" target="_blank" href="#" class="btn btn-primary disabled" role="button">
                     Generate AuthCode <i class="fa fa-external-link" aria-hidden="true"></i>
                 </a>
@@ -117,7 +128,7 @@
             var authcodeButton = document.getElementById('authcode-button');
             var authcodeButton2 = document.getElementById('authcode-button2');
             if(pluginConfig && pluginConfig.length > 0 && pluginConfig[0].callbackUrl && pluginConfig[0].identifier) {
-                var url = `https://api.nibeuplink.com/oauth/authorize?response_type=code&client_id=${pluginConfig[0].identifier}&scope=READSYSTEM WRITESYSTEM&redirect_uri=${pluginConfig[0].callbackUrl}&state=${new Date().getTime()}`
+                var url = `https://api.myuplink.com/oauth/authorize?response_type=code&client_id=${pluginConfig[0].identifier}&scope=READSYSTEM WRITESYSTEM&redirect_uri=${pluginConfig[0].callbackUrl}&state=${new Date().getTime()}`
                 authcodeButton.href = url;
                 authcodeButton2.href = url;
                 authcodeButton.classList.remove('disabled');

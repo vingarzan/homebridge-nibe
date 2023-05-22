@@ -46,7 +46,7 @@ interface Session extends nibeDto.Session {
 }
 
 const consts = {
-  baseUrl: 'https://api.nibeuplink.com',
+  baseUrl: 'https://api.myuplink.com',
   scope: 'READSYSTEM WRITESYSTEM',
   timeout: 45000,
   userAgent: 'fetcher.nibeuplink',

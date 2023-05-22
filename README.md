@@ -22,7 +22,7 @@
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/hpruszyn)
 </div>
 
-## Nibeuplink plugin for homebridge
+## MyUplink/Nibeuplink plugin for homebridge
 
 This homebridge plugin retrieves data from a Nibe heat pump from Nibe Uplink.
 

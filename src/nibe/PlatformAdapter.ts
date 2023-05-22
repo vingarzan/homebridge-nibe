@@ -93,7 +93,7 @@ export abstract class PlatformAdapter {
 
   protected handleNibeData(data: Data) {
     if (data === null || data.unitData === null || data.unitData.length === 0) {
-      this.getLogger().error('No Nibe data from Nibeuplink Api');
+      this.getLogger().error('No Nibe data from MyUplink Api');
       return;
     }
 
